@@ -5,7 +5,7 @@ import UserButton from "@/features/auth/components/user-button";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className=" absolute top-0 z-50 w-full">
       <div className="flex items-center justify-center w-full">
         <div
           className="

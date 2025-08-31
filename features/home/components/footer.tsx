@@ -20,8 +20,8 @@ export const Footer = () => {
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
           {/* Copyright */}
-          <p className="text-sm text-zinc-500 dark:text-zinc-500">
-            &copy; {new Date().getFullYear()} CodeX. All rights reserved.
+          <p className="text-sm flex items-center gap-4 text-zinc-500 dark:text-zinc-500">
+            &copy; {new Date().getFullYear()} <CodeXml className="h-6 w-6" />
           </p>
 
           {/* Social links */}

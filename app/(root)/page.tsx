@@ -1,33 +1,31 @@
-import UserButton from "@/features/auth/components/user-button";
-
 export default function Home() {
   return (
-    <main className="flex-grow flex flex-col items-center justify-center px-4 py-12">
-      <div className="max-w-5xl mx-auto text-center space-y-8">
+    <main className="flex-grow flex flex-col items-center justify-center min-h-screen px-4 py-8">
+      <div className="max-w-4xl mx-auto text-center space-y-6">
         {/* Hero Section */}
-        <div className="space-y-4">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+        <div className="space-y-3">
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
             The Modern Web-based IDE
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Code, compile, and collaborate all in one powerful, browser-based
-            environment. No setup required.
+          <p className="text-base text-muted-foreground  mx-auto">
+            Code, compile, and collaborate in a powerful, browser-based
+            environment. <br /> No setup required.
           </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-          <button className="px-6 py-2.5 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md font-medium transition-colors duration-200">
+        <div className="flex flex-col sm:flex-row gap-2 justify-center pt-1">
+          <button className="px-4 py-2 shadow-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md font-medium transition-colors duration-200">
             Start Coding Now
           </button>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
-          <div className="p-6 rounded-lg border bg-card text-card-foreground">
-            <div className="w-10 h-10 bg-muted rounded-md flex items-center justify-center mb-4 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
+          <div className="p-4 shadow-sm rounded-lg border bg-card text-card-foreground">
+            <div className="w-8 h-8 bg-muted rounded-md flex items-center justify-center mb-3 mx-auto">
               <svg
-                className="w-5 h-5 text-muted-foreground"
+                className="w-4 h-4 text-muted-foreground"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -40,19 +38,18 @@ export default function Home() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-foreground">
+            <h3 className="text-base font-semibold mb-1 text-foreground">
               Powerful Editor
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Syntax highlighting, intelligent code completion, and customizable
-              themes for an enhanced coding experience.
+            <p className="text-muted-foreground text-xs">
+              Syntax highlighting, code completion, and customizable themes.
             </p>
           </div>
 
-          <div className="p-6 rounded-lg border bg-card text-card-foreground">
-            <div className="w-10 h-10 bg-muted rounded-md flex items-center justify-center mb-4 mx-auto">
+          <div className="p-4 shadow-sm rounded-lg border bg-card text-card-foreground">
+            <div className="w-8 h-8 bg-muted rounded-md flex items-center justify-center mb-3 mx-auto">
               <svg
-                className="w-5 h-5 text-muted-foreground"
+                className="w-4 h-4 text-muted-foreground"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -65,19 +62,18 @@ export default function Home() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-foreground">
+            <h3 className="text-base font-semibold mb-1 text-foreground">
               Real-time Collaboration
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Code together with others in real-time. Share your workspace
-              instantly and work as a team.
+            <p className="text-muted-foreground text-xs">
+              Code together in real-time and share your workspace instantly.
             </p>
           </div>
 
-          <div className="p-6 rounded-lg border bg-card text-card-foreground">
-            <div className="w-10 h-10 bg-muted rounded-md flex items-center justify-center mb-4 mx-auto">
+          <div className="p-4 shadow-sm rounded-lg border bg-card text-card-foreground">
+            <div className="w-8 h-8 bg-muted rounded-md flex items-center justify-center mb-3 mx-auto">
               <svg
-                className="w-5 h-5 text-muted-foreground"
+                className="w-4 h-4 text-muted-foreground"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -90,12 +86,11 @@ export default function Home() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-foreground">
+            <h3 className="text-base font-semibold mb-1 text-foreground">
               Multiple Languages
             </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Support for JavaScript, Python, Java, C++, and more. Run code
-              directly in your browser.
+            <p className="text-muted-foreground text-xs">
+              Support for JavaScript, Python, Java, C++, and more in-browser.
             </p>
           </div>
         </div>
