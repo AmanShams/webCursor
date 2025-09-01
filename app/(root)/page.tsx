@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex-grow flex flex-col items-center justify-center min-h-screen px-4 py-8">
@@ -14,11 +16,13 @@ export default function Home() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-2 justify-center pt-1">
-          <button className="px-4 py-2 shadow-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md font-medium transition-colors duration-200">
-            Start Coding Now
-          </button>
-        </div>
+        <Link href="/dashboard">
+          <div className="flex flex-col sm:flex-row gap-2 justify-center pt-1">
+            <button className="px-4 py-2 shadow-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md font-medium transition-colors duration-200">
+              Start Coding Now
+            </button>
+          </div>
+        </Link>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
