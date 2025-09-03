@@ -175,7 +175,7 @@ export default function ProjectTable({
 
   return (
     <>
-      <div className="border rounded-lg overflow-hidden">
+      <div className="border w-full rounded-lg overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow>
@@ -238,7 +238,7 @@ export default function ProjectTable({
                     <DropdownMenuContent align="end" className="w-48">
                       <DropdownMenuItem asChild>
                         <MarkedToggleButton
-                          markedForRevision={project.Starmark[0]?.isMarked}
+                          markedForRevision={project?.StarMark[0]?.isMarked}
                           id={project.id}
                         />
                       </DropdownMenuItem>

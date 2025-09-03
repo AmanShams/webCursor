@@ -17,5 +17,17 @@ export interface Project {
   updatedAt: Date;
   userId: string;
   user: User;
-  Starmark: { isMarked: boolean }[];
+  StarMark: { isMarked: boolean }[];
+}
+
+export interface TemplateOption {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  popularity: number;
+  tags: string[];
+  features: string[];
+  category: "frontend" | "backend" | "fullstack";
 }
