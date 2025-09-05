@@ -72,9 +72,21 @@ model Playground {
   StarMark StarMark[]
   userId String
   user User @relation(fields: [userId] , references: [id] , onDelete: Cascade)
+  templateFiles TemplateFile[]
 
   createdAt DateTime @default(now()) 
-  updatedAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
+}
+
+model TemplateFile {
+  id String @id @default(cuid()) @map("_id")
+  content Json
+
+  playgroundId String
+  playground Playground @relation(fields: [playgroundId] , references: [id] , onDelete: Cascade  )
+
+  createdAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 }
 
 model StarMark {
@@ -84,7 +96,7 @@ model StarMark {
   isMarked Boolean
 
   createdAt DateTime @default(now()) 
-  updatedAt DateTime @default(now()) 
+  updatedAt DateTime @updatedAt
 
   user User @relation(fields: [userId] , references: [id] , onDelete: Cascade)
   playground Playground  @relation(fields: [playgroundId] , references: [id] , onDelete: Cascade)

@@ -3,7 +3,7 @@ import { TemplateOption } from "../features/dashboard/types";
 export const templates: TemplateOption[] = [
   {
     id: "react",
-    name: "React",
+    name: "React.Js",
     description:
       "A JavaScript library for building user interfaces with component-based architecture",
     icon: "/reactIcon.svg",
