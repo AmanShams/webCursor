@@ -5,7 +5,7 @@ import { usePlayground } from "@/features/playground/hooks/usePlayground";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useParams } from "next/navigation";
-import TemplateFileTree from "@/features/playground/components/playground-explorer";
+import { TemplateFileTree } from "@/features/playground/components/playground-explorer";
 
 import React from "react";
 
