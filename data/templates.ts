@@ -14,7 +14,7 @@ export const templates: TemplateOption[] = [
     category: "frontend",
   },
   {
-    id: "nextjsIcon.svg",
+    id: "nextjs",
     name: "Next.js",
     description:
       "The React framework for production with server-side rendering and static site generation",
