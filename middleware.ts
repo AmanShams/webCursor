@@ -1,4 +1,4 @@
-import { auth } from "./auth";
+import { NextRequest } from "next/server";
 import {
   apiAuthPrefix,
   authRoutes,
@@ -6,9 +6,13 @@ import {
   publicRoutes,
 } from "./routes";
 
-export default auth((req) => {
+export default function middleware(req: NextRequest) {
   const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
+
+  const authToken =
+    req.cookies.get("authjs.session-token")?.value ||
+    req.cookies.get("__Secure-authjs.session-token")?.value;
+  const isLoggedIn = !!authToken;
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
@@ -30,7 +34,7 @@ export default auth((req) => {
   }
 
   return null;
-});
+}
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
