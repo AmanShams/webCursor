@@ -11,9 +11,10 @@ import validateJsonStructure from "@/lib/template/validate-json-structure";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
+  const { id } = await context.params;
+
   if (!id) {
     return Response.json(
       { error: "Playground Id is Missing" },
@@ -21,9 +22,7 @@ export async function GET(
     );
   }
 
-  const playground = await db.playground.findUnique({
-    where: { id },
-  });
+  const playground = await db.playground.findUnique({ where: { id } });
 
   if (!playground) {
     return Response.json({ error: "Playground not Found" }, { status: 404 });
@@ -33,7 +32,7 @@ export async function GET(
   const templatePath = templatePaths[templateKey];
 
   if (!templatePath) {
-    return Response.json({ error: "Invalide Template" }, { status: 404 });
+    return Response.json({ error: "Invalid Template" }, { status: 404 });
   }
 
   try {
@@ -45,8 +44,8 @@ export async function GET(
 
     if (!validateJsonStructure(result.items)) {
       return Response.json(
-        { error: "Invalide Json Structure" },
-        { status: 404 }
+        { error: "Invalid Json Structure" },
+        { status: 400 }
       );
     }
 
@@ -59,7 +58,7 @@ export async function GET(
   } catch (error) {
     console.error("Error generating template Json", error);
     return Response.json(
-      { error: "Failed to generate template " },
+      { error: "Failed to generate template" },
       { status: 500 }
     );
   }
