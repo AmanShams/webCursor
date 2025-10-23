@@ -1,4 +1,4 @@
-import { TemplateFile } from "@prisma/client";
+import { OpenFile } from "../types";
 import React, { useEffect, useCallback, useRef } from "react";
 import Editor, { type Monaco } from "@monaco-editor/react";
 import {
@@ -6,10 +6,9 @@ import {
   defaultEditorOptions,
   getEditorLanguage,
 } from "../lib/editor-config";
-import { getFallbackRouteParams } from "next/dist/server/request/fallback-params";
 
 interface PlaygroundEditorProps {
-  activeFile: TemplateFile | undefined;
+  activeFile: OpenFile | undefined;
   content: string;
   onContentChange: (value: string) => void;
 }

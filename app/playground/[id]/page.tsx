@@ -10,14 +10,10 @@ import React, { useEffect, useState } from "react";
 
 import {
   FileText,
-  FolderOpen,
-  AlertCircle,
-  Save,
   X,
   Settings,
   SaveIcon,
   SaveAllIcon,
-  Bot,
   BotMessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,19 +38,17 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import Image from "next/image";
-import { TemplateFile } from "@prisma/client";
+import { TemplateFile } from "@/features/playground/types";
 import PlaygroundEditor from "@/features/playground/components/playground-editor";
+import { useWebContainer } from "@/features/webContainers/hooks/useWebContainer";
+import WebContainerPreview from "@/features/webContainers/components/web-container-preview";
 
 const Page = () => {
   const { id } = useParams<{ id: string }>();
-  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
+  const [isPreviewVisible, setIsPreviewVisible] = useState(true);
   const {
     playgroundData,
     templateData,
-    isLoading,
-    error,
-    loadPlayground,
-    saveTemplateData,
   } = usePlayground(id);
 
   const {
@@ -62,20 +56,20 @@ const Page = () => {
     closeAllFiles,
     openFile,
     closeFile,
-    editorContent,
     updateFileContent,
-    handleAddFile,
-    handleAddFolder,
-    handleDeleteFile,
-    handleDeleteFolder,
-    handleRenameFile,
-    handleRenameFolder,
     openFiles,
     setTemplateData,
     setActiveFileId,
     setPlaygroundId,
-    setOpenFiles,
   } = useFileExplorer();
+
+  const {
+    serverUrl,
+    isLoading: containerLoading,
+    error: containerError,
+    instance,
+    writeFileSync,
+  } = useWebContainer({ templateData });
 
   useEffect(() => {
     setPlaygroundId(id);
@@ -244,40 +238,38 @@ const Page = () => {
                   </Tabs>
                 </div>
 
-                {/* Editor here  */}
-                {/* <div className="flex-1">
+                <div className="flex-1">
                   <ResizablePanelGroup
                     direction="horizontal"
                     className="h-full"
                   >
                     <ResizablePanel defaultSize={isPreviewVisible ? 50 : 100}>
                       <PlaygroundEditor
-                        activeFile={activeFile}
-                        content={activeFile?.content || ""}
+                        activeFile={activeFiles}
+                        content={activeFiles?.content || ""}
                         onContentChange={(value) =>
                           activeFileId && updateFileContent(activeFileId, value)
                         }
-                        suggestion={aiSuggestions.suggestion}
-                        suggestionLoading={aiSuggestions.isLoading}
-                        suggestionPosition={aiSuggestions.position}
-                        onAcceptSuggestion={(editor, monaco) =>
-                          aiSuggestions.acceptSuggestion(editor, monaco)
-                        }
-                        onRejectSuggestion={(editor) =>
-                          aiSuggestions.rejectSuggestion(editor)
-                        }
-                        onTriggerSuggestion={(type, editor) =>
-                          aiSuggestions.fetchSuggestion(type, editor)
-                        }
+                        // suggestion={aiSuggestions.suggestion}
+                        // suggestionLoading={aiSuggestions.isLoading}
+                        // suggestionPosition={aiSuggestions.position}
+                        // onAcceptSuggestion={(editor, monaco) =>
+                        //   aiSuggestions.acceptSuggestion(editor, monaco)
+                        // }
+                        // onRejectSuggestion={(editor) =>
+                        //   aiSuggestions.rejectSuggestion(editor)
+                        // }
+                        // onTriggerSuggestion={(type, editor) =>
+                        //   aiSuggestions.fetchSuggestion(type, editor)
+                        // }
                       />
                     </ResizablePanel>
-
                     {isPreviewVisible && (
                       <>
                         <ResizableHandle />
                         <ResizablePanel defaultSize={50}>
                           <WebContainerPreview
-                            templateData={templateData}
+                            templateData={templateData || { folderName: "root", items: [] }}
                             instance={instance}
                             writeFileSync={writeFileSync}
                             isLoading={containerLoading}
@@ -289,15 +281,7 @@ const Page = () => {
                       </>
                     )}
                   </ResizablePanelGroup>
-                </div> */}
-
-                <PlaygroundEditor
-                  activeFile={activeFiles}
-                  content={activeFiles?.content || ""}
-                  onContentChange={(value) =>
-                    activeFileId && updateFileContent(activeFileId, value)
-                  }
-                />
+                </div>
               </div>
             ) : (
               <div className="flex flex-col h-full items-center justify-center text-muted-foreground gap-4">
