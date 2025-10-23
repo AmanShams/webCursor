@@ -1,6 +1,7 @@
 import { DashboardSidebar } from "@/features/dashboard/components/dashboard-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { getAllPlaygroundForUser } from "@/features/playground/actions";
+import { PlaygroundData } from "@/features/playground/types";
 
 export default async function DashboardLayout({
   children,
@@ -19,7 +20,7 @@ export default async function DashboardLayout({
   };
 
   const formattedPlaygroundData =
-    playgroundData?.map((item) => ({
+    playgroundData?.map((item: PlaygroundData) => ({
       id: item.id,
       name: item.title,
       starred: item.StarMark?.[0]?.isMarked || false,
