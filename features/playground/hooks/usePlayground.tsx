@@ -4,7 +4,7 @@ import { TemplateFolder } from "../lib/path-to-json";
 import { getPlaygroundById, SaveUpdatedCode } from "../actions";
 
 interface PlaygroundData {
-  id: string;
+  id?: string;
   title?: string;
   [key: string]: unknown;
 }
@@ -34,7 +34,7 @@ export const usePlayground = (id: string): UsePlaygroundReturn => {
       setError(null);
       const data = await getPlaygroundById(id);
 
-      setPlaygroundData(data);
+      setPlaygroundData(data || null);
 
       const rawContent = data?.templateFiles?.[0]?.content;
 

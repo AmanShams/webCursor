@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { CodeXml } from "lucide-react";
 import SignInFormClient from "@/features/auth/components/signin-form-client";
 

@@ -80,17 +80,26 @@ export const SaveUpdatedCode = async (
   if (!user) return null;
 
   try {
-    const updatedPlayground = await db.templateFile.upsert({
+    // Since playgroundId is not unique on TemplateFile, we can't use upsert here.
+    // Find an existing template file for this playground and update, otherwise create.
+    const existing = await db.templateFile.findFirst({
       where: { playgroundId },
-      update: {
-        content: JSON.stringify(data),
-      },
-      create: {
-        playgroundId,
-        content: JSON.stringify(data),
-      },
     });
 
-    return updatedPlayground;
+    if (existing) {
+      const updated = await db.templateFile.update({
+        where: { id: existing.id },
+        data: { content: JSON.stringify(data) },
+      });
+      return updated;
+    } else {
+      const created = await db.templateFile.create({
+        data: {
+          playgroundId,
+          content: JSON.stringify(data),
+        },
+      });
+      return created;
+    }
   } catch (error) {}
 };
