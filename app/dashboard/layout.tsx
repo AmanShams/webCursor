@@ -2,6 +2,7 @@ import { DashboardSidebar } from "@/features/dashboard/components/dashboard-side
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { getAllPlaygroundForUser } from "@/features/playground/actions";
 import { PlaygroundData } from "@/features/playground/types";
+import { Header } from "@/features/home/components/header";
 
 export default async function DashboardLayout({
   children,
@@ -29,10 +30,13 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full overflow-x-hidden">
-        {/* Pass the formatted data with string icon names */}
-        <DashboardSidebar initialPlaygroundData={formattedPlaygroundData} />
-        <main className="flex-1">{children}</main>
+      <div className="min-h-screen w-full overflow-x-hidden relative">
+        <Header />
+        <div className="flex pt-16">
+          {/* Pass the formatted data with string icon names */}
+          <DashboardSidebar initialPlaygroundData={formattedPlaygroundData} />
+          <main className="flex-1">{children}</main>
+        </div>
       </div>
     </SidebarProvider>
   );

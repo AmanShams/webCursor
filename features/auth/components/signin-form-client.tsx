@@ -13,12 +13,12 @@ import { signIn } from "@/auth";
 
 async function handleGoogleSignIn() {
   "use server";
-  await signIn("google");
+  await signIn("google", { callbackUrl: "/dashboard" });
 }
 
 async function handleGithubSignIn() {
   "use server";
-  await signIn("github");
+  await signIn("github", { callbackUrl: "/dashboard" });
 }
 
 const SignInFormClient = () => {
@@ -48,7 +48,7 @@ const SignInFormClient = () => {
         </form>
       </CardContent>
 
-      <CardFooter>
+      {/* <CardFooter>
         <p className="text-sm text-center text-gray-500 dark:text-gray-400 w-full">
           By signing in, you agree to our{" "}
           <a href="#" className="underline hover:text-primary">
@@ -60,7 +60,7 @@ const SignInFormClient = () => {
           </a>
           .
         </p>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

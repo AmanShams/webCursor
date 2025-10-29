@@ -69,12 +69,7 @@ export function DashboardSidebar({
   );
 
   return (
-    <Sidebar variant="inset" collapsible="icon" className="border-1 border-r">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-4 py-3 justify-center">
-          <CodeXml className="h-6 w-6 text-primary" />
-        </div>
-      </SidebarHeader>
+    <Sidebar variant="inset" collapsible="icon" className="border-r mt-14">
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>

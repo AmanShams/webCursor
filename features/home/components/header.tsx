@@ -5,7 +5,7 @@ import UserButton from "@/features/auth/components/user-button";
 
 export const Header = () => {
   return (
-    <header className=" absolute top-0 z-50 w-full">
+    <header className="absolute top-0 z-50 w-full">
       <div className="flex items-center justify-center w-full">
         <div
           className="
@@ -14,8 +14,7 @@ export const Header = () => {
           backdrop-blur-md
           border-b
           border-zinc-200 dark:border-zinc-800
-          w-full max-w-7xl
-          rounded-b-lg
+          w-full
           px-6 py-3
           transition-all duration-300 ease-in-out
         "
