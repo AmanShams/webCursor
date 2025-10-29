@@ -17,7 +17,7 @@ export default function Home() {
         </div>
 
         {/* CTA Buttons */}
-        <Link href="/dashboard">
+        <Link href="/auth/sign-in">
           <div className="flex flex-col sm:flex-row gap-2 justify-center pt-1">
             <button className="px-4 py-2 shadow-sm border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md font-medium transition-colors duration-200">
               Start Coding Now
